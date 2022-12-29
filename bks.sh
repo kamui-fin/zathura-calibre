@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# minimal calibre + zathura fuzzy find viewer
-# deps: calibredb, jq, rofi
-
 book_dir=$HOME/books
 book_cache=$HOME/.cache/bks
 history_file=$HOME/.local/share/zathura/history
@@ -53,8 +50,7 @@ elif [[ $1 == "-sync" ]]; then
 fi
 
 load_cache
-selected=$(list_bk | \
-    rofi -font "Iosevka 13" -dmenu -i -matching fuzzy -no-custom -location 0 -p "Book > ")
+selected=$(list_bk | rofi -dmenu -i -matching fuzzy -no-custom -location 0 -p "Book > ")
 
 if [ -z $selected ]; then
     die "Nothing selected"
